@@ -1,0 +1,51 @@
+COURSE-6
+Sprint-1
+Challenge
+
+create database CarSales;
+use CarSales;
+create table CarSales
+(salesId int Primary key,FirstName varchar(20),City varchar(30),CommisionRate int);
+desc CarSales;
+insert into CarSales values(1001,'John','London',12);
+insert into Carsales values(1002,'Bob','San Jose',13);
+insert into Carsales values(1004,'Judith','London',11);
+insert into Carsales values(1007,'Robin','Barceliona',15);
+insert into Carsales values(1003,'Harry','New York',10);
+insert into Carsales values(1005,'James','London',28);
+insert into Carsales values(1008,'Charles','Florida',0);
+select*from CarSales;
+
+use CarSales;
+create table customer
+(customerId int primary key,FirstName varchar(20),LastName varchar(20),city varchar(20),rating int,salesId int, foreign key(salesId) references carSales(salesId));
+desc customer;
+insert into customer values(2001,'Hoffman','Anny','London',100,1001);
+insert into customer values(2002,'Glovanni','Jenny','Rome',200,1003);
+insert into customer values(2003,'Liu','William','San Jose',100,1002);
+insert into customer values(2004,'Harry','Grass','Berlin',300,1002);
+insert into customer values(2005,'Clemens','John','London',200,1001);
+insert into customer values(2006,'Fanny','John','San Jose',200,1005);
+insert into customer values(2007,'Jonathan','Bob','Rome',300,1004);
+select*from customer;
+use carsales;
+create table Orderr
+(OrderId int primary key,Amount int,OrderDate varchar(30),CustomerId int,foreign key(Customerid)references Customer(Customerid));
+desc Orderr;
+insert into Orderr values (3001,123,'01-02-2020',2001);
+insert into Orderr values (3001,187,'02-10-2020',2007);
+insert into Orderr values (3001,100,'30-07-2000',2003);
+insert into Orderr values (3001,201,'09-10-2011',2007);
+insert into Orderr values (3001,145,'10-10-2012',2002);
+insert into Orderr values (3001,167,'02-04-2021',2002);
+insert into Orderr values (3008,189,'02-03-1999',2006);
+insert into Orderr values (3010,100,'18-09-2000',2004);
+select*from Orderr;
+delete from Orderr where OrderId=3008;
+delete from CarSales  where CommisionRate=0;
+update Orderr 
+set amount=100
+where amount=200; 
+update customer
+set rating=150
+where rating=100;
